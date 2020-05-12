@@ -16,3 +16,8 @@ def get_calc_price(price):
     price = int(price)
     return {"price":price+1}    
     
+@app.route('/indepth/<stock>')
+def get_stock_info(stock):
+    
+    return {"stock":stock} 
+    

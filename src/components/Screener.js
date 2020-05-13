@@ -8,6 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { IconButton, Typography, TableSortLabel, TablePagination } from '@material-ui/core';
+import ShowChart from '@material-ui/icons/ShowChart';
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -52,7 +55,9 @@ function Screener(props) {
                </TableCell>
                <TableCell align="right">{row.calories}</TableCell>
                <TableCell align="right">{row.fat}</TableCell>
-               <TableCell align="right">{row.carbs}</TableCell>
+               <TableCell align="right"><IconButton href="/analyze?name=netflix" color='primary'>
+                      <ShowChart/>
+                    </IconButton></TableCell>
              </TableRow>
            ))}
          </TableBody>

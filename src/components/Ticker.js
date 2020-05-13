@@ -8,6 +8,14 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useLocation
+} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +29,8 @@ const useStyles = makeStyles({
 
 
 function Ticker(props) {
-  
+  let { id } = useParams();
+
   return (
     <Card  className={useStyles.root}>
         <CardContent>
@@ -35,7 +44,7 @@ function Ticker(props) {
         </CardContent>
       <CardActions>
         <Button size="small" color="primary" onClick={() => this.addVote()}>
-          Vote
+          Vote ID: {id}
         </Button>
         Price: {props.time}
       </CardActions>

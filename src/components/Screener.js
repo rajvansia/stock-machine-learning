@@ -25,7 +25,7 @@ function createData(stock, calories, fat, carbs, protein) {
   return { stock, calories, fat, carbs, protein };
 }
 
-const rows = [
+const ros = [
   createData('JPM', 159, 6.0, 24, 4.0),
   createData('UHS', 237, 9.0, 37, 4.3),
   createData('BYND', 262, 16.0, 24, 6.0),
@@ -35,7 +35,8 @@ const rows = [
 
 function Screener(props) {
   const classes = useStyles();
-
+  console.log(props.predicthistory.data);
+  const rows = props.predicthistory.data
   return (
     <TableContainer component={Paper}>
        <Table className={classes.table} aria-label="simple table">
@@ -49,13 +50,13 @@ function Screener(props) {
          </TableHead>
          <TableBody>
            {rows.map((row) => (
-             <TableRow key={row.stock}>
+             <TableRow key={row.symbol}>
                <TableCell component="th" scope="row">
-                 {row.stock}
+                 {row.symbol}
                </TableCell>
-               <TableCell align="right">{row.calories}</TableCell>
-               <TableCell align="right">{row.fat}</TableCell>
-               <TableCell align="right"><IconButton href="/analyze?name=netflix" color='primary'>
+               <TableCell align="right">{row.machine_cr}</TableCell>
+               <TableCell align="right">{row.num_trades}</TableCell>
+               <TableCell align="right"><IconButton href={"analyze?name="+row.symbol} color='primary'>
                       <ShowChart/>
                     </IconButton></TableCell>
              </TableRow>

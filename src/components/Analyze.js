@@ -26,7 +26,7 @@ function Analyze(props) {
     <Card  className={useStyles.root}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Stock Name
+            Symbol {props.name}
           </Typography>
           
           <Typography variant="body2" color="textSecondary" component="p">
@@ -37,7 +37,6 @@ function Analyze(props) {
         <Button size="small" color="primary" onClick={() => this.addVote()}>
           Vote
         </Button>
-        Name: {props.name}
       </CardActions>
     </Card>
   );

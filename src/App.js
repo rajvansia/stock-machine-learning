@@ -21,6 +21,19 @@ function useQuery() {
 
 function Dashboard(){
   const [currentTime, setCurrentTime] = useState(0);
+  const [predictHistory, setPredictHistory] = useState({'data':[{'symbol':'ibm',
+'machine_cr':'0',
+'hold_cr':'0',
+'num_trades':'0'
+},{'symbol':'t',
+'machine_cr':'0',
+'hold_cr':'0',
+'num_trades':'0'
+},{'symbol':'m',
+'machine_cr':'0',
+'hold_cr':'0',
+'num_trades':'0'
+}]});
   let query = useQuery();
 
   useEffect(() => {
@@ -28,25 +41,32 @@ function Dashboard(){
       setCurrentTime(data.price);
     });
   }, []);
+  
+  useEffect(() => {
+    fetch('/predicthistory').then(res => res.json()).then(data => {
+      setPredictHistory(data);
+    });
+  }, []);
+  
   return(
     <div className="App-header">
     <header>
         <h2>
           Stock AI App with Flask
         </h2>
+        <div className="App-link">
         <Link to="/">Screener</Link>
         {' '}
-        <Link to="/ticker"> Ticker</Link>
         {' '}
         <Link to="/analyze">Analyze Stock</Link>
         {' '}
-        <Link to="/analyze?name=netflix">Netflix</Link>
-        <Link to="/ticker?name=1">Netflix</Link>
+        </div>
+
     </header>
     <br></br>
         <div>
         <Switch>
-          <Route exact path="/" render={(props) => <Screener {...props} time={currentTime} />}/>
+          <Route exact path="/" render={(props) => <Screener {...props} predicthistory={predictHistory} />}/>
           <Route exact path="/ticker" render={(props) => <Ticker time={currentTime+1} />}/>
 
           <Analyze name={query.get("name")} />

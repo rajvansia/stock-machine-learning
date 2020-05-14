@@ -1,4 +1,6 @@
 import time
+import json
+
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -18,6 +20,21 @@ def get_calc_price(price):
     
 @app.route('/indepth/<stock>')
 def get_stock_info(stock):
+    return {"stock":stock}
     
-    return {"stock":stock} 
+@app.route('/predicthistory')  
+def predict_history():  
+    return {'data':[{'symbol':'ibm',
+'machine_cr':'12',
+'hold_cr':'22',
+'num_trades':'2'
+},{'symbol':'t',
+'machine_cr':'12',
+'hold_cr':'22',
+'num_trades':'2'
+},{'symbol':'m',
+'machine_cr':'12',
+'hold_cr':'22',
+'num_trades':'2'
+}]}
     

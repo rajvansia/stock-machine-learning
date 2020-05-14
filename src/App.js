@@ -4,6 +4,7 @@ import './App.css';
 import Ticker from "./components/Ticker"
 import Screener from "./components/Screener"
 import Analyze from "./components/Analyze"
+import Sortable from "./components/Sortable"
 
 
 import {
@@ -59,6 +60,8 @@ function Dashboard(){
         {' '}
         {' '}
         <Link to="/analyze">Analyze Stock</Link>
+        <Link to="/sort">Sort Table</Link>
+
         {' '}
         </div>
 
@@ -68,6 +71,8 @@ function Dashboard(){
         <Switch>
           <Route exact path="/" render={(props) => <Screener {...props} predicthistory={predictHistory} />}/>
           <Route exact path="/ticker" render={(props) => <Ticker time={currentTime+1} />}/>
+          <Route exact path="/sort" render={(props) => <Sortable {...props} predicthistory={predictHistory} />}/>
+
 
           <Analyze name={query.get("name")} />
           <Ticker time={query.get("name")}/>

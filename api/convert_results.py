@@ -25,15 +25,15 @@ with open('./machine.csv', 'r') as csvfile:
         # (except for the header) and then keep the values we want 
         final = []
         for row in reader:
-            print(final_data)
             # We also restructure the data so that it exists as 
             # a set of date keys with the value as a dictionary of
             # different data elements from the CSV.
+            
             final_data = {
                 "symbol": row["symbol"],
-                "machine_cr": row["machine_cr"],
+                "machine_cr": round(float(row["machine_cr"])*100,3),
                 "num_trades": row["num_trades"],
-                "hold_cr": row["hold_cr"]
+                "hold_cr": round(float(row["hold_cr"])*100,3)
             }
             final.append(final_data)
             

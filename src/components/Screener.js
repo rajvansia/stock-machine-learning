@@ -36,15 +36,16 @@ const ros = [
 function Screener(props) {
   const classes = useStyles();
   console.log(props.predicthistory.data);
-  const rows = props.predicthistory.data
+  let rows = props.predicthistory.data
   return (
     <TableContainer component={Paper}>
        <Table className={classes.table} aria-label="simple table">
          <TableHead>
            <TableRow>
              <TableCell>Stock Symbol</TableCell>
-             <TableCell align="right">Price</TableCell>
-             <TableCell align="right">Buy Raiting</TableCell>
+             <TableCell align="right">Machine Trader Return</TableCell>
+             <TableCell align="right">Number of Trades</TableCell>
+             <TableCell align="right">Buy and Hold Return</TableCell>
              <TableCell align="right">In Depth Analysis</TableCell>
            </TableRow>
          </TableHead>
@@ -56,6 +57,7 @@ function Screener(props) {
                </TableCell>
                <TableCell align="right">{row.machine_cr}</TableCell>
                <TableCell align="right">{row.num_trades}</TableCell>
+                <TableCell align="right">{row.hold_cr}</TableCell>
                <TableCell align="right"><IconButton href={"analyze?name="+row.symbol} color='primary'>
                       <ShowChart/>
                     </IconButton></TableCell>

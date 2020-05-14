@@ -22,8 +22,8 @@ def get_calc_price(price):
 def get_stock_info(stock):
     return {"stock":stock}
     
-@app.route('/predicthistory')  
-def predict_history():  
+@app.route('/p')  
+def p():  
     return {'data':[{'symbol':'ibm',
 'machine_cr':'12',
 'hold_cr':'22',
@@ -37,4 +37,12 @@ def predict_history():
 'hold_cr':'22',
 'num_trades':'2'
 }]}
+
+
+@app.route('/predicthistory')  
+def predict_history():
+    with open('./machine.json', 'r') as jsonfile:
+        file_data = json.loads(jsonfile.read())
+# We can then find the data for the requested date and send it back as json
+    return json.dumps(file_data)
     
